@@ -1,0 +1,23 @@
+#!/bin/sh
+
+bold="#ab4642"
+
+Date() {
+    date=$(date "+%d/%m/%Y")
+    echo -n "%{F$bold}Date:%{F-} $date    "
+}
+
+Time() {
+    time=$(date "+%X")
+    echo -n "%{F$bold}Time:%{F-} $time    "
+}
+
+Battery() {
+    battery=$(acpi --battery | cut -d, -f2)
+    echo -n "%{F$bold}Battery:%{F-}$battery    "
+}
+
+while true; do
+    echo "%{c}$(Date)$(Time)$(Battery)"
+    sleep 1;
+done
