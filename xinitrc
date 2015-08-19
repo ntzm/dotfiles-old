@@ -1,4 +1,4 @@
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+xrdb -merge ~/.Xresources
 
 nitrogen --restore &
 ~/.scripts/panel &
