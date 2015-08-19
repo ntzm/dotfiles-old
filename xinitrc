@@ -1,8 +1,7 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 nitrogen --restore &
-panel &
-urxvt -e pipes.sh &
+~/.scripts/panel &
 wmname LG3D &
 
 sxhkd &
