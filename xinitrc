@@ -4,3 +4,4 @@ nitrogen --restore &
 wmname LG3D &
 sxhkd &
 exec bspwm
+
