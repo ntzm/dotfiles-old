@@ -12,12 +12,7 @@ Time() {
     echo -n "%{F$bold}Time:%{F-} $time    "
 }
 
-Battery() {
-    battery=$(acpi --battery | cut -d, -f2)
-    echo -n "%{F$bold}Battery:%{F-}$battery    "
-}
-
 while true; do
-    echo "%{c}$(Date)$(Time)$(Battery)"
+    echo "%{c}$(Date)$(Time)"
     sleep 1;
 done

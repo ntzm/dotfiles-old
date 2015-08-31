@@ -2,7 +2,7 @@
 URxvt.scrollBar: false
 
 ! Set font
-URxvt.font: xft:Tewi:size=10
+URxvt.font: xft:Tewi:size=10:antialias=true
 
 ! Base16 Default
 ! Scheme: Chris Kempson (http://chriskempson.com)

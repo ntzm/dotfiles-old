@@ -81,7 +81,7 @@ super + Return
 	urxvt
 
 super + space
-	dmenu_run -fn "Tewi-10" -h 20 -w 400 -nb "#181818" -nf "#d8d8d8" -sb "#181818" -sf "#ab4642"
+	dmenu_run -fn "Tewi-10" -h 20 -w 700 -nb "#181818" -nf "#d8d8d8" -sb "#181818" -sf "#ab4642"
 
 XF86Audio{Raise,Lower}Volume
         amixer sset Master {1+,1-} unmute
