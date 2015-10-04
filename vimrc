@@ -13,6 +13,9 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
+" use tabs for expanding emmet abbreviations
+let g:user_emmet_expandabbr_key = '<Tab>'
+
 " make airline use powerline fonts
 let g:airline_powerline_fonts = 1
 
