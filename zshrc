@@ -1,5 +1,5 @@
 export ZSH=/home/nat/.oh-my-zsh
-ZSH_THEME="norm"
+ZSH_THEME="agnoster"
 
 # Requires zsh-syntax-highlighting
 plugins=(git zsh-syntax-highlighting)
@@ -12,10 +12,13 @@ alias x="xclip -selection clipboard"
 # Requires fortune, cowsay and toilet
 alias gaycow="fortune | cowsay | toilet --gay -f term"
 
-# yaourt aliases
-alias ya="yaourt"
-alias yains="ya -S"
-alias yaupd="ya -Sy"
-alias yaupg="ya -Syua"
-alias yarem="ya -Rns"
+# pacman aliases
+alias pac="pacaur --noconfirm"
+alias pacins="pac -S"
+alias pacupd="pac -Sy"
+alias pacupg="pac -Syu"
+alias pacrem="pac -Rns"
+
+# artisan aliases
+alias art="php artisan"
 
