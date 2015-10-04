@@ -1,18 +1,17 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-commentary'
+call plug#begin('~/.vim/plugged')
 
-call vundle#end()
+Plug 'mattn/emmet-vim'
+Plug 'StanAngeloff/php.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
 
 " make airline use powerline fonts
 let g:airline_powerline_fonts = 1
