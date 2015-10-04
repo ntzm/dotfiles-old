@@ -45,3 +45,6 @@ set expandtab
 " always show status bar
 set laststatus=2
 
+" sudo saving
+cmap w!! w !sudo tee > /dev/null %
+
