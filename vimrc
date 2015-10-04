@@ -10,6 +10,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
