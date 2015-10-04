@@ -1,5 +1,5 @@
 #!/bin/sh
 
-~/.scripts/panel_bar | lemonbar -g x20 -f "Tewi-10" -B "#181818" -F "#d8d8d8" &
+~/.scripts/panel_bar | lemonbar -g x20 -f "Source Code Pro-8" -B "#181818" -F "#d8d8d8" &
 
 wait
