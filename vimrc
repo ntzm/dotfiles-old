@@ -3,20 +3,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'StanAngeloff/php.vim'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 
-" ultisnippets options
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+" make airline use powerline fonts
+let g:airline_powerline_fonts = 1
 
 filetype plugin indent on
 " enable syntax highighting
@@ -34,8 +33,6 @@ set ignorecase
 set smartcase
 " detect indent type automatically
 set autoindent
-" visual bell instead of beep
-set visualbell
 " avoid annoying prompts
 set cmdheight=2
 " indent by 4 spaces
