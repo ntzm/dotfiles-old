@@ -49,3 +49,10 @@ set laststatus=2
 " sudo saving
 cmap w!! w !sudo tee > /dev/null %
 
+" make j and k go up and down wrapped lines
+map j gj
+map k gk
+
+" markdown settings
+au Filetype markdown source ~/.vim/type-settings/markdown.vim
+
