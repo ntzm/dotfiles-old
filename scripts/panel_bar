@@ -1,18 +1,42 @@
 #!/bin/sh
 
-bold="#ab4642"
+readonly highlight_color="#f0c674"
 
-Date() {
-    date=$(date "+%d/%m/%Y")
-    echo -n "%{F$bold}Date:%{F-} $date    "
+highlight_fg() {
+	echo -n "%{F$highlight_color}$1%{F-}"
 }
 
-Time() {
-    time=$(date "+%X")
-    echo -n "%{F$bold}Time:%{F-} $time    "
+highlight_bg() {
+	echo -n "%{R}%{B$highlight_color} $1 %{B-}%{R}"
 }
+
+get_music() {
+	mpc &>/dev/null
+
+	if [ $? -eq 0 ]; then
+		local readonly output=$(mpc -f "%albumartist% - %title%" | head -n 1)
+
+		if [[ $output != volume* ]]; then
+			echo -n "$(highlight_fg "") $output"
+		fi
+	fi
+}
+
+get_volume() {
+	echo -n "$(highlight_fg "") $(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')"
+}
+
+get_date() {
+	echo -n "$(highlight_fg "") $(date "+%a %-e %b %Y")"
+}
+
+get_time() {
+	echo -n "$(highlight_bg "$(date "+%H:%M")")"
+}
+
+readonly hostname_username="$(highlight_bg "$(whoami)@$(hostname)")"
 
 while true; do
-    echo "%{c}$(Date)$(Time)"
+	echo "%{l}$hostname_username $(get_music)%{r}$(get_volume) $(get_date) $(get_time)"
     sleep 1;
 done

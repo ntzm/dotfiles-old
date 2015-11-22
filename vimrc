@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
@@ -11,11 +10,14 @@ Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
+Plug 'xsbeats/vim-blade'
+Plug 'digitaltoad/vim-jade'
 
 call plug#end()
 
-" use tabs for expanding emmet abbreviations
-let g:user_emmet_expandabbr_key = '<Tab>'
+" only enable emmet for HTML and CSS files
+let g:user_emmet_install_global = 0
+autocmd FileType blade,html,css EmmetInstall
 
 " make airline use powerline fonts
 let g:airline_powerline_fonts = 1
@@ -52,7 +54,3 @@ cmap w!! w !sudo tee > /dev/null %
 " make j and k go up and down wrapped lines
 map j gj
 map k gk
-
-" markdown settings
-au Filetype markdown source ~/.vim/type-settings/markdown.vim
-

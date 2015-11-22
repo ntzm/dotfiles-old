@@ -1,5 +1,8 @@
 #!/bin/sh
 
-~/.scripts/panel_bar | lemonbar -g x20 -f "Source Code Pro-8" -B "#181818" -F "#d8d8d8" &
+readonly main_font="Source Code Pro-8"
+readonly icon_font="Font Awesome-9"
+
+~/.scripts/panel_bar | lemonbar -g x20 -f "$main_font" -f "$icon_font" -B "#FF1d1f21" -F "#c5c8c6" &
 
 wait

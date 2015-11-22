@@ -2,74 +2,96 @@
 # bspwm hotkeys
 #
 
-super + alt + Escape
-	bspc quit
-
+# Close current window
 super + w
 	bspc window -c
 
-super + t
-	bspc desktop -l next
-
+# Make all windows on desktop take up the same amount of space
 super + b
 	bspc desktop -B
 
+# Make current window sticky
+super + e
+        bspc window -t sticky
+
+# Switch window between floating or fullscreen
 super + {s,f}
 	bspc window -t {floating,fullscreen}
 
+# Grave: previous window
+# Tab:   previous desktop
 super + {grave,Tab}
 	bspc {window,desktop} -f last
 
+# Swap current window with previous
 super + apostrophe
 	bspc window -s last
 
+# Cycle through windows in chronological order
 super + {o,i}
 	bspc control --record-history off; \
 	bspc window {older,newer} -f; \
 	bspc control --record-history on
 
-super + y
-	bspc window -w last.manual
-
+# Swap the current window with the largest
 super + m
 	bspc window -s biggest
 
+# No shift: Shift focus in direction
+# Shift:    Swap window in direction
 super + {_,shift + }{h,j,k,l}
 	bspc window -{f,s} {left,down,up,right}
 
+# Cycle focus through windows on current desktop
 super + {_,shift + }c
 	bspc window -f {next,prev}
 
+# Circulate the leaves of the tree
 super + {comma,period}
 	bspc desktop -C {backward,forward}
 
-super + bracket{left,right}
-	bspc desktop -f {prev,next}
+# No shift: Move left or right through desktops
+# Shift:    Move current window to previous/next desktop
+super + {_,shift} + bracket{left,right}
+	bspc {desktop -f,window -d} {prev,next}
 
+# Preselect the splitting area of the selected window in direction
 super + ctrl + {h,j,k,l}
 	bspc window -p {left,down,up,right}
 
+# No shift: Cancel preselection
+# Shift:    TODO
 super + ctrl + {_,shift + }space
 	bspc {window -p cancel,desktop -c}
 
+#
 super + alt + {h,j,k,l}
 	bspc window -e {left -10,down +10,up -10,right +10}
 
+#
 super + alt + shift + {h,j,k,l}
 	bspc window -e {right -10,up +10,down -10,left +10}
 
+# Change splitting ratio of current window
 super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
+# No shift: Move to numbered desktop
+# Shift:    Move current window to numbered desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,window -d} ^{1-9,10}
 
+# Switch focus to window
 ~button1
 	bspc pointer -g focus
 
+# Mouse 1: Move window
+# Mouse 2: Resize one window side
+# Mouse 3: Resize window corner
 super + button{1-3}
 	; bspc pointer -g {move,resize_side,resize_corner}
 
+# On mouse up: Stop moving or resizing window
 super + @button{1-3}
 	bspc pointer -u
 
@@ -78,10 +100,10 @@ super + @button{1-3}
 #
 
 super + Return
-	urxvt
+	urxvtc
 
 super + space
-	dmenu_run -fn "Source Code Pro-8" -h 20 -w 700 -nb "#181818" -nf "#d8d8d8" -sb "#181818" -sf "#ab4642"
+	launcher
 
 XF86Audio{Raise,Lower}Volume
         amixer sset Master {1+,1-} unmute
@@ -89,4 +111,3 @@ XF86Audio{Raise,Lower}Volume
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
