@@ -2,6 +2,9 @@
 
 readonly highlight_color="#f0c674"
 
+# Birthday in format %m %d
+readonly birthday="10 20"
+
 # Check that acpi exists, because then we know if they want the battery displayed
 acpi &>/dev/null
 readonly acpi_status=$?
@@ -26,6 +29,14 @@ get_music() {
 	fi
 }
 
+get_birthday() {
+	local readonly current_date=$(date "+%m %d")
+
+	if [ "$current_date" = "$birthday" ]; then
+		echo -n "$(highlight_fg " Happy Birthday! ")"
+	fi
+}
+
 get_battery() {
 	if [ $acpi_status -ne 127 ]; then
 		echo -n "$(highlight_fg "") $(acpi | awk '{print $4}' | head -c -2)"
@@ -47,6 +58,6 @@ get_time() {
 readonly hostname_username="$(highlight_bg "$(whoami)@$(hostname)")"
 
 while true; do
-	echo "%{l}$hostname_username $(get_music)%{r}$(get_battery) $(get_volume) $(get_date) $(get_time)"
+	echo "%{l}$hostname_username $(get_music)%{c}$(get_birthday)%{r}$(get_battery) $(get_volume) $(get_date) $(get_time)"
 	sleep 1;
 done
