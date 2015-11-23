@@ -2,6 +2,10 @@
 
 readonly highlight_color="#f0c674"
 
+# Check that acpi exists, because then we know if they want the battery displayed
+acpi &>/dev/null
+readonly acpi_status=$?
+
 highlight_fg() {
 	echo -n "%{F$highlight_color}$1%{F-}"
 }
@@ -22,6 +26,12 @@ get_music() {
 	fi
 }
 
+get_battery() {
+	if [ $acpi_status -ne 127 ]; then
+		echo -n "$(highlight_fg "") $(acpi | awk '{print $4}' | head -c -2)"
+	fi
+}
+
 get_volume() {
 	echo -n "$(highlight_fg "") $(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')"
 }
@@ -37,6 +47,6 @@ get_time() {
 readonly hostname_username="$(highlight_bg "$(whoami)@$(hostname)")"
 
 while true; do
-	echo "%{l}$hostname_username $(get_music)%{r}$(get_volume) $(get_date) $(get_time)"
-    sleep 1;
+	echo "%{l}$hostname_username $(get_music)%{r}$(get_battery) $(get_volume) $(get_date) $(get_time)"
+	sleep 1;
 done
